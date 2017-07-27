@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityTrigno_MovementAnalysis.CSharp", "UnityTrigno_MovementAnalysis.CSharp.csproj", "{55311180-65CB-FE5F-5829-739E2F7D62A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityTrigno_MovementAnalysis.CSharp.Editor", "UnityTrigno_MovementAnalysis.CSharp.Editor.csproj", "{6E094993-E8F7-5A9B-DA78-D47A986CC2E1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{55311180-65CB-FE5F-5829-739E2F7D62A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55311180-65CB-FE5F-5829-739E2F7D62A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55311180-65CB-FE5F-5829-739E2F7D62A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55311180-65CB-FE5F-5829-739E2F7D62A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E094993-E8F7-5A9B-DA78-D47A986CC2E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E094993-E8F7-5A9B-DA78-D47A986CC2E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E094993-E8F7-5A9B-DA78-D47A986CC2E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E094993-E8F7-5A9B-DA78-D47A986CC2E1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
