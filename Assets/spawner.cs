@@ -19,7 +19,7 @@ public class spawner : MonoBehaviour {
     private Vector3 spawnPos;
     private Vector3 dist;
     public int lastTunnel;
-    private int count;
+    public int count;
 
 
     void Start()
@@ -35,7 +35,7 @@ public class spawner : MonoBehaviour {
         if(player.transform.position.z < Tunnels[needPos].transform.position.z) //Deletes the spawns tunnel chunk after needPos is passed.
         {
             if (destroy)
-                Object.Destroy(Tunnels[(count-1)%10]);
+                Object.Destroy(Tunnels[(count+9)%10]);
             else
                 destroy = true;                      //Only takes place after the first needPos pass.
 
@@ -53,7 +53,7 @@ public class spawner : MonoBehaviour {
         whatToSpawnClone.transform.Rotate(0, 90, 0);
         whatToSpawnClone.transform.parent = GameObject.Find("-Spawner").transform;
 
-        Tunnels[(count-1)%10] = whatToSpawnClone;
+        Tunnels[(count+9)%10] = whatToSpawnClone;
         count = (count+1)%10;
         lastTunnel = (lastTunnel+1)%10;
 
