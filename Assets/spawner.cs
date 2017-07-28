@@ -1,135 +1,62 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class spawner : MonoBehaviour {
 
-    public Transform spawnLocation; //spawnLocation is the Transform of the second chunk
+    //public Transform spawnLocation; //spawnLocation is the Transform of the second chunk
     public GameObject whatToSpawnPrefab; // This is the first chunk which will always remain in game in order to instantiate copies. *could simply be removed and replaced by Tunnel
     public GameObject whatToSpawnClone; // This acts as a reference to the most recent game object to be instantiated.
-    public GameObject Tunnel; // This is the first chunk which will always remain in game in order to instantiate copies.
     public GameObject player;
     private bool destroy = false; // This boolean is used to prevent the first Tunnel chunk from being destroyed.
-    // The Tunnel# objects reference the the 10 chunks being "recycled"
-    public GameObject Tunnel1;
-    public GameObject Tunnel2;
-    public GameObject Tunnel3;
-    public GameObject Tunnel4;
-    public GameObject Tunnel5;
-    public GameObject Tunnel6;
-    public GameObject Tunnel7;
-    public GameObject Tunnel8;
-    public GameObject Tunnel9;
-    public GameObject Tunnel10;
+
+    
+    public GameObject[] Tunnels = new GameObject[10]; //Objects referencing the 10 chunks being "recycled"
 
     public GameObject Game;
-    private Vector3 needPos; // Represents the point the player must cross in order to destroy the previous chunk and instantiating the next chunk
+
+    private int needPos; // Represents the point the player must cross in order to destroy the previous chunk and instantiating the next chunk
+    private Vector3 spawnPos;
+    private Vector3 dist;
+    public int lastTunnel;
     private int count;
 
 
     void Start()
     {
-        needPos = spawnLocation.position; 
-        count = 2;
+        needPos = 1;   //Location of second chunk.
+        dist = new Vector3(0,0,-111.296f);  //Length of tunnel chunk.
+        count = 1;          //Set so that the second chunk is deleted first
+        lastTunnel = 9;
     }
 
     void Update()
     {
-        if(player.transform.position.z < needPos.z+40)
+        if(player.transform.position.z < Tunnels[needPos].transform.position.z) //Deletes the spawns tunnel chunk after needPos is passed.
         {
             if (destroy)
-            {
-                switch (count)
-                {
-                    case 1:
-                        Object.Destroy(Tunnel10);
-                        break;
-                    case 2:
-                        Object.Destroy(Tunnel1);
-                        break;
-                    case 3:
-                        Object.Destroy(Tunnel2);
-                        break;
-                    case 4:
-                        Object.Destroy(Tunnel3);
-                        break;
-                    case 5:
-                        Object.Destroy(Tunnel4);
-                        break;
-                    case 6:
-                        Object.Destroy(Tunnel5);
-                        break;
-                    case 7:
-                        Object.Destroy(Tunnel6);
-                        break;
-                    case 8:
-                        Object.Destroy(Tunnel7);
-                        break;
-                    case 9:
-                        Object.Destroy(Tunnel8);
-                        break;
-                    default:
-                        Object.Destroy(Tunnel9);
-                        break;
-                }
-            }
+                Object.Destroy(Tunnels[(count-1)%10]);
             else
-                destroy = true;
+                destroy = true;                      //Only takes place after the first needPos pass.
 
             spawnObject();
+            needPos = (needPos+1)%10;               //Sets next position to cross.
         }
         
     }
 
     void spawnObject()
     {
-        
-        needPos.z = needPos.z - 1001.664f;
 
-        whatToSpawnClone = Instantiate(whatToSpawnPrefab, needPos, Game.transform.rotation) as GameObject; //
+        whatToSpawnClone = Instantiate(whatToSpawnPrefab, (Tunnels[lastTunnel]).transform.position , Game.transform.rotation) as GameObject;
+        whatToSpawnClone.transform.Translate(dist);
         whatToSpawnClone.transform.Rotate(0, 90, 0);
-        switch (count) {
-            case 1:
-                Tunnel10 = whatToSpawnClone;
-                count++;
-                break;
-            case 2:
-                Tunnel1 = whatToSpawnClone;
-                count++;
-                break;
-            case 3:
-                Tunnel2 = whatToSpawnClone;
-                count++;
-                break;
-            case 4:
-                Tunnel3 = whatToSpawnClone;
-                count++;
-                break;
-            case 5:
-                Tunnel4 = whatToSpawnClone;
-                count++;
-                break;
-            case 6:
-                Tunnel5 = whatToSpawnClone;
-                count++;
-                break;
-            case 7:
-                Tunnel6 = whatToSpawnClone;
-                count++;
-                break;
-            case 8:
-                Tunnel7 = whatToSpawnClone;
-                count++;
-                break;
-            case 9:
-                Tunnel8 = whatToSpawnClone;
-                count++;
-                break;
-            default:
-                Tunnel9 = whatToSpawnClone;
-                count = 1;
-                break;
-        }
-        needPos.z = needPos.z + 890.368f;
+        whatToSpawnClone.transform.parent = GameObject.Find("-Spawner").transform;
 
+        Tunnels[(count-1)%10] = whatToSpawnClone;
+        count = (count+1)%10;
+        lastTunnel = (lastTunnel+1)%10;
+
+        
     }
 }
