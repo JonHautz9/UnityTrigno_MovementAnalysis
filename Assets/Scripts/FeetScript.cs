@@ -6,6 +6,8 @@ using UnityEngine;
 public class FeetScript : MonoBehaviour {
 	public GameObject leftFoot;
 	public GameObject rightFoot;
+    private Vector3 leftTranslation;
+    private Vector3 rightTranslation;
     public MovementController playerMovement;
 
 	Vector3 up = new Vector3(0,.5f,0);
@@ -121,8 +123,10 @@ public class FeetScript : MonoBehaviour {
 
 				left_y += .97f;
 				right_y += .955f;
-				
-	        
+
+            //New Translation function
+            //leftFoot.GetComponent<Rigidbody>().transform.Translate(leftTranslation, relativeTo.Self());
+
 				if (Math.Abs (left_x) > 1.0f
 				         & leftFoot.transform.position.x + left_x > max_right
 				         & leftFoot.transform.position.x + left_x < max_left) {

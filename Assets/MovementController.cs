@@ -7,7 +7,7 @@ using System.Net.Sockets;
 
 public class MovementController : MonoBehaviour
 {
-	private bool debug = false;
+	private bool debug = true;
     private Vector3 velocity;
     private float speed;
     private Vector3 dir;
