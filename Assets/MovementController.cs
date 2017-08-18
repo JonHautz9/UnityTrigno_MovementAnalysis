@@ -201,8 +201,9 @@ public class MovementController : MonoBehaviour
 			countRightEMG += rightEMG;
 			countEMG++;
 
-            //AppendAllBytes("TestData/AccelerometerTestData.data", accData);
-            //AppendAllBytes("TestData/EMGTestData.data", emgData);
+            //Uncomment to collect data
+            AppendAllBytes("TestData/AccelerometerTestData.data", accData);
+            AppendAllBytes("TestData/EMGTestData.data", emgData);
             
 
 			//Debug.Log(String.Format("leftX = {0} leftY = {0} leftZ = {0}", leftX, leftY, leftZ));

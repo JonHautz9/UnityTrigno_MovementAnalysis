@@ -99,7 +99,8 @@ public class FeetScript : MonoBehaviour {
         //leftFoot.transform.position.Set(-.96f, playerMovement.leftY - 11.1f, 2.8f);
         //rightFoot.transform.position.Set(.6f, playerMovement.rightY - 12f, 2.8f);
         //Debug.Log(String.Format("Left Z: {0}, Right Z: {1}", left_z, right_z));
-		if (!(left_x == 0 || left_y == 0 || left_z == 0 || right_x == 0 || right_y == 0 || right_z == 0)
+
+        if (!(left_x == 0 || left_y == 0 || left_z == 0 || right_x == 0 || right_y == 0 || right_z == 0)
 			& prev_left_x != left_x & 
 			prev_left_y != left_y & 
 			prev_left_z != left_z &
@@ -108,21 +109,21 @@ public class FeetScript : MonoBehaviour {
 			prev_right_z != right_z) {
 			
 
-				prev_left_x = left_x;
-				prev_left_y = left_y;
-				prev_left_z = left_z;
-				prev_right_x = right_x;
-				prev_right_y = right_y;
-				prev_right_z = right_z;
+			prev_left_x = left_x;
+			prev_left_y = left_y;
+			prev_left_z = left_z;
+			prev_right_x = right_x;
+			prev_right_y = right_y;
+			prev_right_z = right_z;
 
-				left_z = left_z *  + .25f;
-				right_z = right_z *  - .2f;
+			left_z = left_z *  + .25f;
+			right_z = right_z *  - .2f;
 
-				left_x = (left_x +.25f)*-.3f;
-				right_x = (right_x -.38f ) * -.3f;
+			left_x = (left_x +.25f)*-.3f;
+			right_x = (right_x -.38f ) * -.3f;
 
-				left_y += .97f;
-				right_y += .955f;
+			left_y += .97f;
+			right_y += .955f;
 
             //New Translation function
             //leftFoot.GetComponent<Rigidbody>().transform.Translate(leftTranslation, relativeTo.Self());

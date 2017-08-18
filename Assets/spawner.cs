@@ -32,10 +32,10 @@ public class spawner : MonoBehaviour {
 
     void Update()
     {
-        if(player.transform.position.z < Tunnels[needPos].transform.position.z) //Deletes the spawns tunnel chunk after needPos is passed.
+        if(player.transform.position.z < Tunnels[needPos].transform.position.z) //Deletes then spawns tunnel chunk after needPos is passed.
         {
             if (destroy)
-                Object.Destroy(Tunnels[(count+9)%10]);
+                Object.Destroy(Tunnels[(count+9)%10]); //Destroys tunnel that was just passed
             else
                 destroy = true;                      //Only takes place after the first needPos pass.
 
@@ -51,7 +51,7 @@ public class spawner : MonoBehaviour {
         whatToSpawnClone = Instantiate(whatToSpawnPrefab, (Tunnels[lastTunnel]).transform.position , Game.transform.rotation) as GameObject;
         whatToSpawnClone.transform.Translate(dist);
         whatToSpawnClone.transform.Rotate(0, 90, 0);
-        whatToSpawnClone.transform.parent = GameObject.Find("-Spawner").transform;
+        whatToSpawnClone.transform.parent = GameObject.Find("Tunnels").transform;
 
         Tunnels[(count+9)%10] = whatToSpawnClone;
         count = (count+1)%10;
