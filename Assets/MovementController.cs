@@ -7,7 +7,7 @@ using System.Net.Sockets;
 
 public class MovementController : MonoBehaviour
 {
-	private bool debug = true;
+	private bool debug = false;
     private Vector3 velocity;
     private float speed;
     private Vector3 dir;
@@ -102,12 +102,14 @@ public class MovementController : MonoBehaviour
 		{
 			Game.transform.Rotate(Vector3.right*.5f);
 			MainCamera.transform.rotation = cameraRotation;
+            transform.rotation = cameraRotation;
 		}
 		else if (Input.GetKeyDown("d"))                                 //decrement rotation
 		{
 			Game.transform.Rotate(Vector3.left * .5f);
 			MainCamera.transform.rotation = cameraRotation;
-		}
+            transform.rotation = cameraRotation;
+        }
 		else if (Input.GetKeyDown(KeyCode.Escape) || endSim == true)  // Panic button to kill simulation early
 		{
 			// This is a horrible way of dealing with the timer, but deadlines....
