@@ -22,12 +22,13 @@ public class FeetScript : MonoBehaviour {
 
     public GameObject Player;
 
-    private float floor;
-    private float ceiling;
-    private float max_left;
-    private float max_right;
-    private float max_forward;
-    private float max_backward;
+    private Vector3 floor;
+    private Vector3 ceiling;
+    private Vector3 max_left;
+    private Vector3 max_right;
+    private Vector3 max_forward;
+    private Vector3 max_backward;
+
 
 
     //Used to protect data after check from the child thread.
@@ -50,7 +51,6 @@ public class FeetScript : MonoBehaviour {
         //Set boundaries for Feet
         floor = .99f;
         ceiling = 2.51f;
-        //Pending wether we decide to move along z and x axis we will. If so the max_forward and max_backward valuest will have to be subtracted from the z coordinate of the player object.
         max_left = 1.75f;
         max_right = -1.75f;
         max_forward = 3.8f;
@@ -134,8 +134,8 @@ public class FeetScript : MonoBehaviour {
 					leftFoot.GetComponent<Rigidbody> ().MovePosition (new Vector3 (leftFoot.transform.position.x + left_x / 4, leftFoot.transform.position.y, leftFoot.transform.position.z));
 					//leftFoot.transform.Translate(left_x / 4, 0, 0);
 				}
-				if (Math.Abs (right_x) > 1.0f
-				         & rightFoot.transform.position.x + right_x > max_right
+            if (Math.Abs(right_x) > 1.0f
+                     & rightFoot.transform.position.x + right_x > Player.transform.position + max_right
 				         & rightFoot.transform.position.x + right_x < max_left)
 					rightFoot.GetComponent<Rigidbody> ().MovePosition (new Vector3 (rightFoot.transform.position.x + right_x / 4, rightFoot.transform.position.y, rightFoot.transform.position.z));
 				if (left_y < 0){
